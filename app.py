@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+from datetime import datetime
 
 # Set page configuration
 st.set_page_config(page_title="Happy Birthday Minahil", page_icon="💖")
@@ -52,6 +53,18 @@ st.markdown("""
         border-radius: 8px;
         margin: 5px 0;
         text-align: center;
+    }
+    .gallery-img {
+        border-radius: 10px;
+        margin: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .lock-message {
+        background-color: #ffe4e1;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 18px;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -128,6 +141,23 @@ if st.button("Reveal a Special Gift!"):
     gift = random.choice(gifts)
     st.markdown(f"<div class='gift-item'>🎀 {gift}</div>", unsafe_allow_html=True)
     st.write("I can't wait to spoil you, Minahil! 😍")
+
+# Picture Gallery with Time Lock
+st.subheader("Our Special Moments Gallery 📸")
+unlock_time = datetime(2025, 5, 5, 0, 0)  # 12 AM on May 5, 2025
+current_time = datetime.now()
+
+if current_time >= unlock_time:
+    st.write("Happy Birthday, Minahil! Enjoy our special moments together! 💖")
+    images = [
+        {"url": "https://images.unsplash.com/photo-1516727003471-7ab364f7b474?q=80&w=2070", "caption": "Our love blooms like these flowers! 🌸"},
+        {"url": "https://images.unsplash.com/photo-1516727003471-7ab364f7b474?q=80&w=2070", "caption": "Starry nights with you, my love! 🌟"},
+        {"url": "https://images.unsplash.com/photo-1516727003471-7ab364f7b474?q=80&w=2070", "caption": "Forever by your side, Minahil! 💞"}
+    ]
+    for img in images:
+        st.image(img["url"], caption=img["caption"], use_column_width=True, output_format="JPEG")
+else:
+    st.markdown("<div class='lock-message'>Wait, baby girl! Your special gallery unlocks at midnight on May 5th! 😘</div>", unsafe_allow_html=True)
 
 # Romantic Playlist
 st.subheader("Your Birthday Playlist 🎶")
