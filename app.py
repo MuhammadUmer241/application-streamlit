@@ -1,6 +1,9 @@
 import streamlit as st
+<<<<<<< HEAD
 import random
 from datetime import datetime
+=======
+>>>>>>> parent of cad9a62 (this is second)
 
 # Set page configuration
 st.set_page_config(page_title="Happy Birthday Minahil", page_icon="💖")
@@ -27,7 +30,6 @@ st.markdown("""
     .heart {
         color: #ff0000;
         font-size: 24px;
-        cursor: pointer;
     }
     .stButton>button {
         background-color: #ff69b4;
@@ -40,12 +42,11 @@ st.markdown("""
     .stButton>button:hover {
         background-color: #ff3e8d;
     }
-    .quote-box {
+    .memory-box {
         background-color: #ffe4e1;
         padding: 15px;
         border-radius: 10px;
         margin-top: 10px;
-        text-align: center;
     }
     .gift-item {
         padding: 10px;
@@ -74,8 +75,8 @@ st.markdown("""
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
     confetti({
-        particleCount: 150,
-        spread: 80,
+        particleCount: 100,
+        spread: 70,
         origin: { y: 0.6 }
     });
     </script>
@@ -99,14 +100,7 @@ st.balloons()
 st.subheader("A Little Love Note for You 💌")
 st.write("Minahil, you are my everything. Your smile lights up my world, and your heart is my home. I love you more than words can ever express. Happy Birthday, my forever love! ❤️")
 
-# Interactive heart animation
-st.subheader("Tap the Heart for Love! 💓")
-if st.button("💖 Click Me!", key="heart_button"):
-    st.markdown("<p class='heart'>💕 Love you forever, Minahil! 💕</p>", unsafe_allow_html=True)
-    st.image("https://media.giphy.com/media/LpJTL7X2T3nYk/giphy.gif", caption="My heart beats for you! 😘")
-
 # Special message reveal button
-st.subheader("A Surprise Just for You! 🌸")
 if st.button("Click for a Special Surprise!"):
     st.markdown("""
         ### My Promise to You 🌸
@@ -115,32 +109,24 @@ if st.button("Click for a Special Surprise!"):
     """)
     st.image("https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif", caption="You make my heart skip a beat! 💓")
 
-# Romantic Quote Generator
-st.subheader("A Sweet Quote for You 💬")
-quotes = [
-    "Minahil, you're the melody to my heart's song. Happy Birthday, my love! 🎶",
-    "Every day with you feels like a gift, Minahil. Here's to your special day! 🎉",
-    "My love for you grows stronger every moment, Minahil. Happy Birthday! 💞",
-    "You're my forever and always, Minahil. Have the best birthday ever! 🌟",
-    "Minahil, you're my sunshine on every cloudy day. Happy Birthday, sweetheart! ☀️"
-]
-if st.button("Get a Romantic Quote!"):
-    quote = random.choice(quotes)
-    st.markdown(f"<div class='quote-box'>💕 {quote}</div>", unsafe_allow_html=True)
+# Favorite Memories Section
+st.subheader("Our Favorite Memories Together 📸")
+memory = st.text_area("Share a special memory with Minahil:", height=100)
+if memory:
+    st.markdown(f"<div class='memory-box'>💕 **Our Special Memory**: {memory}</div>", unsafe_allow_html=True)
+    st.write("Let's make more unforgettable moments, my love!")
 
-# Gift Reveal Section
-st.subheader("A Gift for My Princess 🎁")
-gifts = [
+# Gift Ideas Carousel
+st.subheader("Gift Ideas for My Princess 🎁")
+gift_ideas = [
     "A personalized love letter book with our story 💌",
     "A romantic dinner date under the stars 🌟",
     "A custom necklace with our initials 💞",
     "A weekend getaway to a cozy cabin 🏡",
     "A spa day to pamper my queen 💆‍♀️"
 ]
-if st.button("Reveal a Special Gift!"):
-    gift = random.choice(gifts)
-    st.markdown(f"<div class='gift-item'>🎀 {gift}</div>", unsafe_allow_html=True)
-    st.write("I can't wait to spoil you, Minahil! 😍")
+selected_gift = st.selectbox("Pick a gift idea for Minahil:", gift_ideas)
+st.markdown(f"<div class='gift-item'>🎀 {selected_gift}</div>", unsafe_allow_html=True)
 
 # Picture Gallery with Time Lock
 st.subheader("Our Special Moments Gallery 📸")
@@ -160,7 +146,7 @@ else:
     st.markdown("<div class='lock-message'>Wait, baby girl! Your special gallery unlocks at midnight on May 5th! 😘</div>", unsafe_allow_html=True)
 
 # Romantic Playlist
-st.subheader("Your Birthday Playlist 🎶")
+st.subheader("A Playlist for Your Special Day 🎶")
 st.write("Enjoy these romantic tunes curated just for you, Minahil!")
 st.markdown("""
     <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=PL55713C70BA91BD6F" 
