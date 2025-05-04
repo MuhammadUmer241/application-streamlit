@@ -1,153 +1,217 @@
 import streamlit as st
-<<<<<<< HEAD
 import random
-from datetime import datetime
-=======
->>>>>>> parent of cad9a62 (this is second)
 
 # Set page configuration
-st.set_page_config(page_title="Happy Birthday Minahil", page_icon="💖")
+st.set_page_config(page_title="Happy Birthday Minahil", page_icon="💝", layout="wide")
 
-# Custom CSS for styling
+# Custom CSS for a vibrant, romantic design
 st.markdown("""
     <style>
     .main {
-        background-color: #fff0f5;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(180deg, #ffccd5, #ffb3e6, #ccffcc);
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1.5s ease-in-out;
     }
     h1 {
-        color: #ff1493;
+        color: #ff3399;
         text-align: center;
-        font-family: 'Georgia', serif;
+        font-family: 'Brush Script MT', cursive;
+        font-size: 48px;
+        text-shadow: 3px 3px #ff99cc;
+        animation: glow 2s infinite;
     }
-    h2, h3 {
-        color: #c71585;
+    h2 {
+        color: #ff0066;
         text-align: center;
-        font-family: 'Arial', sans-serif;
-    }
-    .heart {
-        color: #ff0000;
-        font-size: 24px;
+        font-family: 'Verdana', sans-serif;
+        font-size: 28px;
     }
     .stButton>button {
-        background-color: #ff69b4;
+        background: linear-gradient(to right, #ff3399, #ff66cc);
         color: white;
-        border-radius: 10px;
-        padding: 12px;
-        font-size: 16px;
-        transition: background-color 0.3s;
+        border: none;
+        border-radius: 20px;
+        padding: 15px 30px;
+        font-size: 20px;
+        font-family: 'Verdana', sans-serif;
+        transition: transform 0.3s, box-shadow 0.3s;
+        margin: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
     .stButton>button:hover {
-        background-color: #ff3e8d;
+        transform: scale(1.15);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     }
-    .memory-box {
-        background-color: #ffe4e1;
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 10px;
+    .heart {
+        color: #ff1a1a;
+        font-size: 35px;
+        animation: heartbeat 1.5s infinite;
     }
-    .gift-item {
-        padding: 10px;
-        background-color: #f8f1f1;
-        border-radius: 8px;
-        margin: 5px 0;
+    .surprise-box {
+        background: #fff0f5;
+        padding: 25px;
+        border-radius: 20px;
+        margin: 20px 0;
         text-align: center;
+        font-size: 20px;
+        color: #333;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        animation: slideIn 0.5s ease-in;
     }
     .gallery-img {
-        border-radius: 10px;
-        margin: 10px 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        transition: transform 0.4s;
+        max-width: 80%;
+        margin: 0 auto;
     }
-    .lock-message {
-        background-color: #ffe4e1;
-        padding: 15px;
-        border-radius: 10px;
-        text-align: center;
-        font-size: 18px;
+    .gallery-img:hover {
+        transform: scale(1.1);
+    }
+    .spin-heart {
+        font-size: 50px;
+        animation: spin 2s linear infinite;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes glow {
+        0% { text-shadow: 3px 3px #ff99cc; }
+        50% { text-shadow: 3px 3px #ff4da6; }
+        100% { text-shadow: 3px 3px #ff99cc; }
+    }
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.3); }
+        100% { transform: scale(1); }
+    }
+    @keyframes slideIn {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Add confetti animation using canvas-confetti
+# Confetti script for button clicks
 st.markdown("""
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-    });
+    function triggerConfetti() {
+        confetti({
+            particleCount: 150,
+            spread: 80,
+            origin: { y: 0.6 },
+            colors: ['#ff3399', '#ff66cc', '#ff99cc']
+        });
+    }
     </script>
 """, unsafe_allow_html=True)
 
 # Title and header
-st.title("💖 Happy Birthday, Minahil! 💖")
-st.header("To My Amazing Girlfriend 🎉")
+st.title("🎂 Happy Birthday, Minahil! 🎂")
+st.header("My Princess, My Heart 💝")
 
 # Personalized birthday message
 st.markdown("""
-    ## 🎂 Dearest Minahil, My Love 💞
-    Happy Birthday, my sweetheart! Today is all about celebrating you – the most beautiful, kind, and incredible girl in the world. 
-    You make every moment brighter, and I'm so lucky to have you as my girlfriend. Here's to a day filled with love, laughter, and all your favorite things!
+    ### 💖 My Sweetest Minahil 💞
+    Happy Birthday, my darling! You're the sparkle in my eyes and the beat in my heart. Today is YOUR day, filled with love, surprises, and all the joy you deserve! 
+    I’m so grateful to have you as my girlfriend. Let’s make this birthday magical! 😘
 """)
-
-# Balloons animation
 st.balloons()
 
-# Love note section
-st.subheader("A Little Love Note for You 💌")
-st.write("Minahil, you are my everything. Your smile lights up my world, and your heart is my home. I love you more than words can ever express. Happy Birthday, my forever love! ❤️")
+# Love note
+st.subheader("A Kiss from My Heart 💋")
+st.write("Minahil, you’re my dream girl. Your smile makes my world brighter, and your love makes every day perfect. Happy Birthday, my one and only! 💕")
 
-# Special message reveal button
-if st.button("Click for a Special Surprise!"):
-    st.markdown("""
-        ### My Promise to You 🌸
-        Minahil, I promise to make this year the best yet – filled with adventures, cozy nights, and endless love. You're my dream come true, and I'll always be by your side. Happy Birthday, my princess! 😘
-        Maybe I am busy in my job and all other things. But you mean a lot to me. You are my love, my sweetheart!
-    """)
-    st.image("https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif", caption="You make my heart skip a beat! 💓")
+# Interactive heart animation
+st.subheader("Catch My Love! 💓")
+if st.button("💝 Send a Heart!", key="heart_button", on_click="triggerConfetti()"):
+    st.markdown("<p class='heart'>💖 I’m crazy about you, Minahil! 😍</p>", unsafe_allow_html=True)
+    st.image("https://media.giphy.com/media/l0MYt5jPRbr0acqFI/giphy.gif", caption="My love for you is endless! 💋")
 
-# Favorite Memories Section
-st.subheader("Our Favorite Memories Together 📸")
-memory = st.text_area("Share a special memory with Minahil:", height=100)
-if memory:
-    st.markdown(f"<div class='memory-box'>💕 **Our Special Memory**: {memory}</div>", unsafe_allow_html=True)
-    st.write("Let's make more unforgettable moments, my love!")
-
-# Gift Ideas Carousel
-st.subheader("Gift Ideas for My Princess 🎁")
-gift_ideas = [
-    "A personalized love letter book with our story 💌",
-    "A romantic dinner date under the stars 🌟",
-    "A custom necklace with our initials 💞",
-    "A weekend getaway to a cozy cabin 🏡",
-    "A spa day to pamper my queen 💆‍♀️"
+# Surprise Quote Pop-up
+st.subheader("A Love Note for You 💬")
+quotes = [
+    "Minahil, you’re my heart’s home. Happy Birthday, my love! 🏡",
+    "Every moment with you is a treasure, Minahil. Shine today! ✨",
+    "My heart sings for you, Minahil. Happy Birthday, my angel! 🎶",
+    "You’re my forever, Minahil. Have the sweetest birthday! 💖",
+    "Minahil, you light up my life. Happy Birthday, my star! 🌟"
 ]
-selected_gift = st.selectbox("Pick a gift idea for Minahil:", gift_ideas)
-st.markdown(f"<div class='gift-item'>🎀 {selected_gift}</div>", unsafe_allow_html=True)
+if st.button("Pop a Love Quote!", on_click="triggerConfetti()"):
+    quote = random.choice(quotes)
+    st.markdown(f"<div class='surprise-box'>💞 {quote}</div>", unsafe_allow_html=True)
 
-# Picture Gallery with Time Lock
-st.subheader("Our Special Moments Gallery 📸")
-unlock_time = datetime(2025, 5, 5, 0, 0)  # 12 AM on May 5, 2025
-current_time = datetime.now()
+# Surprise Gift Pop-up
+st.subheader("Your Birthday Surprise! 🎁")
+gifts = [
+    "A scrapbook of our love story 💌",
+    "A moonlit dinner just for us 🌙",
+    "A locket with our picture inside 💞",
+    "A weekend escape to a dreamy spot 🏖️",
+    "A day of pampering for my queen 💅"
+]
+if st.button("Unwrap a Gift!", on_click="triggerConfetti()"):
+    gift = random.choice(gifts)
+    st.markdown(f"<div class='surprise-box'>🎀 {gift}</div>", unsafe_allow_html=True)
+    st.write("For you, my love, anything! 😍")
 
-if current_time >= unlock_time:
-    st.write("Happy Birthday, Minahil! Enjoy our special moments together! 💖")
-    images = [
-        {"url": "https://images.unsplash.com/photo-1516727003471-7ab364f7b474?q=80&w=2070", "caption": "Our love blooms like these flowers! 🌸"},
-        {"url": "https://images.unsplash.com/photo-1516727003471-7ab364f7b474?q=80&w=2070", "caption": "Starry nights with you, my love! 🌟"},
-        {"url": "https://images.unsplash.com/photo-1516727003471-7ab364f7b474?q=80&w=2070", "caption": "Forever by your side, Minahil! 💞"}
+# Interactive Picture Gallery
+st.subheader("Our Love in Pictures 📷")
+st.write("Slide through our moments, Minahil! 💕")
+images = [
+    {"url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070", "caption": "Our love is as vast as the sea! 🌊"},
+    {"url": "https://images.unsplash.com/photo-1516727003471-7ab364f7b474?q=80&w=2070", "caption": "You make my heart bloom! 🌸"},
+    {"url": "https://images.unsplash.com/photo-1538947151057-d9f0b7044da3?q=80&w=2070", "caption": "Under the stars with you! 🌟"}
+]
+if 'gallery_index' not in st.session_state:
+    st.session_state.gallery_index = 0
+slider = st.slider("Slide to see our memories!", 0, len(images)-1, st.session_state.gallery_index, key="gallery_slider")
+st.session_state.gallery_index = slider
+current_image = images[st.session_state.gallery_index]
+st.image(current_image["url"], caption=current_image["caption"], use_column_width=True)
+col1, col2, col3 = st.columns([1, 2, 1])
+with col1:
+    if st.button("⬅️ Back", on_click="triggerConfetti()"):
+        st.session_state.gallery_index = (st.session_state.gallery_index - 1) % len(images)
+with col3:
+    if st.button("Next ➡️", on_click="triggerConfetti()"):
+        st.session_state.gallery_index = (st.session_state.gallery_index + 1) % len(images)
+
+# Spin the Heart Game
+st.subheader("Spin the Heart! 💖")
+if st.button("Spin for a Surprise!", on_click="triggerConfetti()"):
+    surprises = [
+        "A big hug from me! 🤗",
+        "A sweet kiss for you! 😘",
+        "A dance under the stars! 💃",
+        "A love poem just for you! 📜",
+        "A day full of cuddles! 🥰"
     ]
-    for img in images:
-        st.image(img["url"], caption=img["caption"], use_column_width=True, output_format="JPEG")
-else:
-    st.markdown("<div class='lock-message'>Wait, baby girl! Your special gallery unlocks at midnight on May 5th! 😘</div>", unsafe_allow_html=True)
+    surprise = random.choice(surprises)
+    st.markdown(f"<div class='surprise-box'><p class='spin-heart'>💖</p> {surprise}</div>", unsafe_allow_html=True)
+
+# Special Message
+st.subheader("My Vow to You 🌺")
+if st.button("Hear My Heart!", on_click="triggerConfetti()"):
+    st.markdown("""
+        <div class='surprise-box'>
+        Minahil, my sweetheart, I promise to love you fiercely, cherish every moment with you, and make every day special. 
+        Work may keep me busy, but you’re my heart’s home – my love, my everything. Happy Birthday, my princess! 💝
+        </div>
+    """, unsafe_allow_html=True)
+    st.image("https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif", caption="Forever yours, Minahil! 💓")
 
 # Romantic Playlist
-st.subheader("A Playlist for Your Special Day 🎶")
-st.write("Enjoy these romantic tunes curated just for you, Minahil!")
+st.subheader("Dance to Our Love 🎵")
+st.write("These songs are for you, my Minahil! 💃")
 st.markdown("""
     <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?list=PL55713C70BA91BD6F" 
     title="Romantic Playlist" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -155,4 +219,4 @@ st.markdown("""
 
 # Footer
 st.markdown("---")
-st.write("Made with all my love for you, Minahil ❤️ | Powered by Streamlit")
+st.markdown("<p style='text-align: center; font-size: 18px;'>Made with endless love for you, Minahil 💝 | Powered by Streamlit</p>", unsafe_allow_html=True)
