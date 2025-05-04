@@ -99,20 +99,19 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Confetti script for button clicks
-st.markdown("""
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script>
-    function triggerConfetti() {
+# Function to trigger confetti
+def trigger_confetti():
+    st.markdown("""
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+        <script>
         confetti({
             particleCount: 150,
             spread: 80,
             origin: { y: 0.6 },
             colors: ['#ff3399', '#ff66cc', '#ff99cc']
         });
-    }
-    </script>
-""", unsafe_allow_html=True)
+        </script>
+    """, unsafe_allow_html=True)
 
 # Title and header
 st.title("🎂 Happy Birthday, Minahil! 🎂")
@@ -121,7 +120,7 @@ st.header("My Princess, My Heart 💝")
 # Personalized birthday message
 st.markdown("""
     ### 💖 My Sweetest Minahil 💞
-    Happy Birthday, my darling! You're the sparkle in my eyes and the beat in my heart. Today is YOUR day, filled with love, surprises, and all the joy you deserve! 
+    hAPPY Birthday, my darling! You're the sparkle in my eyes and the beat in my heart. Today is YOUR day, filled with love, surprises, and all the joy you deserve! 
     I’m so grateful to have you as my girlfriend. Let’s make this birthday magical! 😘
 """)
 st.balloons()
@@ -132,7 +131,8 @@ st.write("Minahil, you’re my dream girl. Your smile makes my world brighter, a
 
 # Interactive heart animation
 st.subheader("Catch My Love! 💓")
-if st.button("💝 Send a Heart!", key="heart_button", on_click="triggerConfetti()"):
+if st.button("💝 Send a Heart!", key="heart_button"):
+    trigger_confetti()
     st.markdown("<p class='heart'>💖 I’m crazy about you, Minahil! 😍</p>", unsafe_allow_html=True)
     st.image("https://media.giphy.com/media/l0MYt5jPRbr0acqFI/giphy.gif", caption="My love for you is endless! 💋")
 
@@ -145,7 +145,8 @@ quotes = [
     "You’re my forever, Minahil. Have the sweetest birthday! 💖",
     "Minahil, you light up my life. Happy Birthday, my star! 🌟"
 ]
-if st.button("Pop a Love Quote!", on_click="triggerConfetti()"):
+if st.button("Pop a Love Quote!", key="quote_button"):
+    trigger_confetti()
     quote = random.choice(quotes)
     st.markdown(f"<div class='surprise-box'>💞 {quote}</div>", unsafe_allow_html=True)
 
@@ -158,7 +159,8 @@ gifts = [
     "A weekend escape to a dreamy spot 🏖️",
     "A day of pampering for my queen 💅"
 ]
-if st.button("Unwrap a Gift!", on_click="triggerConfetti()"):
+if st.button("Unwrap a Gift!", key="gift_button"):
+    trigger_confetti()
     gift = random.choice(gifts)
     st.markdown(f"<div class='surprise-box'>🎀 {gift}</div>", unsafe_allow_html=True)
     st.write("For you, my love, anything! 😍")
@@ -179,15 +181,18 @@ current_image = images[st.session_state.gallery_index]
 st.image(current_image["url"], caption=current_image["caption"], use_column_width=True)
 col1, col2, col3 = st.columns([1, 2, 1])
 with col1:
-    if st.button("⬅️ Back", on_click="triggerConfetti()"):
+    if st.button("⬅️ Back", key="gallery_back"):
+        trigger_confetti()
         st.session_state.gallery_index = (st.session_state.gallery_index - 1) % len(images)
 with col3:
-    if st.button("Next ➡️", on_click="triggerConfetti()"):
+    if st.button("Next ➡️", key="gallery_next"):
+        trigger_confetti()
         st.session_state.gallery_index = (st.session_state.gallery_index + 1) % len(images)
 
 # Spin the Heart Game
 st.subheader("Spin the Heart! 💖")
-if st.button("Spin for a Surprise!", on_click="triggerConfetti()"):
+if st.button("Spin for a Surprise!", key="spin_button"):
+    trigger_confetti()
     surprises = [
         "A big hug from me! 🤗",
         "A sweet kiss for you! 😘",
@@ -200,7 +205,8 @@ if st.button("Spin for a Surprise!", on_click="triggerConfetti()"):
 
 # Special Message
 st.subheader("My Vow to You 🌺")
-if st.button("Hear My Heart!", on_click="triggerConfetti()"):
+if st.button("Hear My Heart!", key="vow_button"):
+    trigger_confetti()
     st.markdown("""
         <div class='surprise-box'>
         Minahil, my sweetheart, I promise to love you fiercely, cherish every moment with you, and make every day special. 
